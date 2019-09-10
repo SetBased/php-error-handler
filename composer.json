@@ -18,11 +18,11 @@
   "autoload": {
     "psr-4": {
       "SetBased\\ErrorHandler\\": "src/"
-    },
-    "autoload-dev": {
-      "psr-4": {
-        "SetBased\\ErrorHandler\\Test\\": "test/"
-      }
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "SetBased\\ErrorHandler\\Test\\": "test/"
     }
   },
   "config": {
