@@ -1,0 +1,31 @@
+{
+  "name": "setbased/error-handler",
+  "description": "An error handler",
+  "keywords": [
+    "Error",
+    "Handler"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": ">=7.1.0",
+    "setbased/exception": "^1.1.0"
+  },
+  "require-dev": {
+    "phing/phing": "^2.0.0",
+    "phpunit/phpunit": "^7.0.0 || ^8.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "SetBased\\ErrorHandler\\": "src/"
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "SetBased\\ErrorHandler\\Test\\": "test/"
+      }
+    }
+  },
+  "config": {
+    "bin-dir": "bin"
+  }
+}

@@ -1,0 +1,7 @@
+/.idea/
+/.phpunit.result.cache
+/bin/
+/composer.lock
+/test/coverage.xml
+/test/report/
+/vendor/
