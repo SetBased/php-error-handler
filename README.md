@@ -33,6 +33,36 @@ An error handler for PHP.
 </tbody>
 </table>
 
+PHP is a great language, however is has some quirks. One of them is that PHP has two mechanisms for signaling errors: exceptions and warnings. The following code will by default not raise an exception:
+```php
+$handle = fopen('no-such-file.txt', 'r');
+```
+It will generate a waring (which is most like to be suppressed) and return false.
+
+This library will throw exceptions in case like above instead of generating warnings.
+
+# Manual
+
+Add the following code at the beginning of your PHP script to throw exceptions (when possible) when a PHP warning, 
+error, or notice occurs.   
+
+```php
+use SetBased\ErrorHandler\ErrorHandler;
+
+$handler = new ErrorHandler();
+$handler->registerErrorHandler(); 
+```
+
+# Installation 
+
+This package can be installed using composer:
+```sh
+composer require setbased/error-handler
+```
+
+Or you can obtain the sources at [GitHub](https://github.com/SetBased/php-error-handler).
+
+
 License
 =======
 
