@@ -68,7 +68,8 @@ class ErrorHandler
   /**
    * Registers this error handler.
    *
-   * @param null|int $errorTypes The mask for triggering this error handler. Defaults to E_ALL | E_STRICT.
+   * @param null|int $errorTypes The mask for triggering this error handler. Defaults to E_ALL. Note E_STRICT is part
+   *                             of E_ALL since PHP 5.4.0.
    */
   public function registerErrorHandler($errorTypes = E_ALL)
   {
