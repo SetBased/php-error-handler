@@ -66,7 +66,7 @@ class ErrorHandlerTest extends TestCase
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Errors suppressed with the @-operator must not throe exceptions.
+   * Errors suppressed with the @-operator must not throw exceptions.
    */
   public function testSuppressedError()
   {
@@ -103,8 +103,8 @@ class ErrorHandlerTest extends TestCase
   {
     $this->expectException(ErrorException::class);
     $this->expectExceptionCode(E_WARNING);
-    $this->expectExceptionMessageRegExp('/fopen/');
-    $this->expectExceptionMessageRegExp(sprintf('!%s!', preg_quote(__DIR__.'/not-found.txt')));
+    $this->expectExceptionMessageMatches('/fopen/');
+    $this->expectExceptionMessageMatches(sprintf('!%s!', preg_quote(__DIR__.'/not-found.txt')));
     fopen(__DIR__.'/not-found.txt', 'r');
   }
 
