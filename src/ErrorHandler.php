@@ -27,7 +27,8 @@ class ErrorHandler
    */
   public function handleError(int $errno, string $errstr, ?string $errfile, ?int $errline): bool
   {
-    if (error_reporting()===0)
+    // See https://www.php.net/manual/en/language.operators.errorcontrol.php for the bitwise or expression.
+    if (error_reporting()===(E_ERROR | E_CORE_ERROR | E_COMPILE_ERROR | E_USER_ERROR | E_RECOVERABLE_ERROR | E_PARSE))
     {
       // Error was suppressed with the @-operator. Don't throw an exception.
       return false;
@@ -71,7 +72,7 @@ class ErrorHandler
    * @param null|int $errorTypes The mask for triggering this error handler. Defaults to E_ALL. Note E_STRICT is part
    *                             of E_ALL since PHP 5.4.0.
    */
-  public function registerErrorHandler($errorTypes = E_ALL)
+  public function registerErrorHandler(?int $errorTypes = E_ALL): void
   {
     ini_set('display_errors', '0');
     set_error_handler([$this, 'handleError'], $errorTypes);
@@ -81,7 +82,7 @@ class ErrorHandler
   /**
    * Unregisters this error handler by restoring the PHP error and exception handlers.
    */
-  public function unregisterErrorHandler()
+  public function unregisterErrorHandler(): void
   {
     restore_error_handler();
   }

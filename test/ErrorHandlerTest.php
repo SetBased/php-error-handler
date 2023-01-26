@@ -16,9 +16,9 @@ class ErrorHandlerTest extends TestCase
   /**
    * The error handler.
    *
-   * @var ErrorHandler
+   * @var ErrorHandler|null
    */
-  private $errorHandler;
+  private ?ErrorHandler $errorHandler = null;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -37,7 +37,7 @@ class ErrorHandlerTest extends TestCase
    *
    * @param \Exception $exception The exception
    */
-  public function exceptionHandler($exception)
+  public function exceptionHandler(\Exception $exception): void
   {
     self::assertInstanceOf(ErrorException::class, $exception);
   }
@@ -68,7 +68,7 @@ class ErrorHandlerTest extends TestCase
   /**
    * Errors suppressed with the @-operator must not throw exceptions.
    */
-  public function testSuppressedError()
+  public function testSuppressedError(): void
   {
     $handle = @fopen(__DIR__.'/not-found.txt', 'r');
     self::assertFalse($handle);
@@ -78,7 +78,7 @@ class ErrorHandlerTest extends TestCase
   /**
    * Test when __toString fails.
    */
-  public function testToString1()
+  public function testToString1(): void
   {
     $tmp = (string)$this;
     self::assertSame('__toString', $tmp);
@@ -88,7 +88,7 @@ class ErrorHandlerTest extends TestCase
   /**
    * Test when __toString fails.
    */
-  public function testToString2()
+  public function testToString2(): void
   {
     set_exception_handler([$this, 'exceptionHandler']);
     $tmp = (string)$this;
@@ -97,9 +97,9 @@ class ErrorHandlerTest extends TestCase
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Test E_WARNING when opening a non existing file throws an exception.
+   * Test E_WARNING when opening a non-existing file throws an exception.
    */
-  public function testWarning()
+  public function testWarning(): void
   {
     $this->expectException(ErrorException::class);
     $this->expectExceptionCode(E_WARNING);
