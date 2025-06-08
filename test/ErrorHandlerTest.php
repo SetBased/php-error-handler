@@ -101,10 +101,8 @@ class ErrorHandlerTest extends TestCase
   //--------------------------------------------------------------------------------------------------------------------
   /**
    * Test when __toString fails.
-   *
-   * The test gives us some problems with PhpUnit 11.
    */
-  public function xtestToString1(): void
+  public function testToString1(): void
   {
     $tmp = (string)$this;
     self::assertSame('__toString', $tmp);

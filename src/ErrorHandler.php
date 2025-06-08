@@ -28,7 +28,7 @@ class ErrorHandler
   public function handleError(int $errno, string $errstr, ?string $errfile, ?int $errline): bool
   {
     // See https://www.php.net/manual/en/language.operators.errorcontrol.php for the bitwise or expression.
-    if (error_reporting()===(E_ERROR | E_CORE_ERROR | E_COMPILE_ERROR | E_USER_ERROR | E_RECOVERABLE_ERROR | E_PARSE))
+    if (error_reporting()===( E_ERROR | E_CORE_ERROR | E_COMPILE_ERROR | E_USER_ERROR | E_RECOVERABLE_ERROR | E_PARSE))
     {
       // The error was suppressed with the @-operator. Don't throw an exception.
       return false;
