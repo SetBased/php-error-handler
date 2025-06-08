@@ -30,7 +30,7 @@ class ErrorHandler
     // See https://www.php.net/manual/en/language.operators.errorcontrol.php for the bitwise or expression.
     if (error_reporting()===(E_ERROR | E_CORE_ERROR | E_COMPILE_ERROR | E_USER_ERROR | E_RECOVERABLE_ERROR | E_PARSE))
     {
-      // Error was suppressed with the @-operator. Don't throw an exception.
+      // The error was suppressed with the @-operator. Don't throw an exception.
       return false;
     }
 
@@ -56,7 +56,10 @@ class ErrorHandler
         }
 
         // If running unit tests return true.
-        if (defined('PHPUNIT_ERROR_HANDLER_TEST_SUITE')) return true;
+        if (defined('PHPUNIT_ERROR_HANDLER_TEST_SUITE'))
+        {
+          return true;
+        }
 
         exit(-1);
       }
